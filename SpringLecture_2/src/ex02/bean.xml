@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+<aop:aspectj-autoproxy/>
+<bean id = "rect" class = "ex02.com.edu.entity.Rectangle" c:title = "사각형" c:data1 = "4" c:data2 = "5"/>
+<bean id = "tri" class ="ex02.com.edu.entity.Triangle" p:title = "삼각형" p:data1 = "3" p:data2 = "7"/>
+<bean id = "advice" class = "ex02.com.edu.aop.MyAspect"/> 
+</beans>
