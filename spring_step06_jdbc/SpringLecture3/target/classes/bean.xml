@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="dataSource"  class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+	p:driverClassName="oracle.jdbc.driver.OracleDriver"	
+	p:url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
+	p:username="scott"
+	p:password="tiger"/>
+
+<bean id="jdbcTemplate"  class="org.springframework.jdbc.core.JdbcTemplate">
+	<property name="dataSource"   ref="dataSource"/>
+</bean>	
+<!-- *********************************************************************** -->
+
+<bean id="test1"  class="test1.UserDaoImpl">
+	<property name="jdbcTemplate"   ref="jdbcTemplate"/>
+</bean>
+
+<!-- *********************************************************************** -->
+
+<bean id="test2" class="test2.UserDaoImpl">
+	<property name="jdbcTemplate"   ref="jdbcTemplate"/>
+	<property name="dto" ref="dto"/>
+</bean>
+
+<bean id="dto"  class="test2.UserDTO">
+	<property name="name"  value="마이콜"/>
+	<property name="addr"   value="서울시 영등포구 여의도동"/>
+	<property name="sal" >
+		<value type="double" >83000</value>
+	</property>	
+</bean>
+
+</beans>
+
+
+
+
+
+
+
+
